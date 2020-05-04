@@ -17,32 +17,11 @@ func _physics_process(delta):
 func move_player(delta):
 	velocity.y += delta * gravity
 	var forward_velocity = move_forward(delta)
-	var strafe_velocity = move_sideways(delta)
+	var strafe_velocity = move_sideways()
 	
 	velocity.z = forward_velocity.z
 	velocity.x = strafe_velocity.x
 	velocity = move_and_slide(velocity, Vector3.UP)
-	
-#	var vel = run_player(delta)
-#	var vel = strafe_player(delta)
-#	var forward_velocity = vel.forward_velocity
-#	strafe_direction = vel.strafe_direction
-#
-#	side_velocity += strafe_direction * S_SPEED 
-#
-#	velocity.y += delta * gravity
-#	var hv = velocity
-#	hv.y = 0
-#	var new_pos = (forward_velocity * F_SPEED)
-#	var acceleration = DECELERATION
-#	if direction.dot(forward_velocity) > 0:
-#		acceleration = DECELERATION
-#
-#	hv = hv.linear_interpolate(new_pos, acceleration * delta)
-#	#velocity.x = hv.x
-#	velocity.x = side_velocity.x
-#	velocity.z = hv.z
-#	velocity = move_and_slide(velocity, Vector3.UP)
 
 func move_forward(delta):
 	var forward_velocity = Vector3()
@@ -60,17 +39,13 @@ func move_forward(delta):
 	fv = fv.linear_interpolate(new_pos, acceleration * delta)
 	return fv
 
-func move_sideways(delta):
+func move_sideways():
 	var sv = Vector3()
 	if Input.is_action_pressed("move_left"):
 		strafe_direction = strafe.left
 	elif Input.is_action_pressed("move_right"):
 		strafe_direction = strafe.right
-		
-	#sv = strafe_direction * S_SPEED
-	#var new_pos = strafe_direction * S_SPEED
-	if strafe_direction != strafe.idle:
-		var s = 0
+	
 	var target_pos = transform.origin
 	target_pos.x = strafe_direction.x * STRAFE_BOUNDARY
 	var target_velocity = target_pos - transform.origin
