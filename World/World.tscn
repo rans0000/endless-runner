@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 
@@ -26,12 +26,15 @@ roughness = 0.0
 [sub_resource type="BoxShape" id=6]
 extents = Vector3( 50, 1, 1 )
 
+[sub_resource type="CubeMesh" id=7]
+
 [node name="World" type="Spatial"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.29069, 0 )
 
 [node name="GroundPlane" type="RigidBody" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45 )
 mode = 1
 
@@ -48,7 +51,65 @@ material/0 = SubResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 49 )
 shape = SubResource( 6 )
 
+[node name="MeshInstance2" type="MeshInstance" parent="GroundPlane"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 49 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="GroundPlane"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 39 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="GroundPlane"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 29 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="GroundPlane"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 19 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="MeshInstance6" type="MeshInstance" parent="GroundPlane"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 9 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="MeshInstance7" type="MeshInstance" parent="GroundPlane"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -1 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="MeshInstance8" type="MeshInstance" parent="GroundPlane"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -11 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="MeshInstance9" type="MeshInstance" parent="GroundPlane"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -21 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="MeshInstance10" type="MeshInstance" parent="GroundPlane"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -31 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="MeshInstance11" type="MeshInstance" parent="GroundPlane"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -41 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="MeshInstance12" type="MeshInstance" parent="GroundPlane"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -51 )
+mesh = SubResource( 7 )
+material/0 = null
+
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( -0.0750431, 0.713754, -0.696364, 0.0984102, 0.700225, 0.707107, 0.992312, -0.0154659, -0.122788, -20, 20, 0 )
-light_energy = 0.1
+shadow_enabled = true
 directional_shadow_mode = 0
+__meta__ = {
+"_edit_lock_": true
+}
