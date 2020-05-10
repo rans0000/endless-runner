@@ -3,10 +3,11 @@ extends KinematicBody
 var gravity = -65
 var velocity = Vector3()
 var previous_speed = Vector3()
-var strafe = {'left': Vector3(-1,0,0), 'idle': Vector3(), 'right': Vector3(1,0,0)}
-var strafe_direction = strafe.idle
+var strafe_position = [-1, 0, 1]
+var current_strafe_position = 1
+const MAX_STRAFE_POSITION = 3
 
-const STRAFE_BOUNDARY = 10
+const STRAFE_DISTANCE = 10
 const F_SPEED = 50
 const S_SPEED = 80
 const ACCELERATION = 1
@@ -58,13 +59,13 @@ func move_sideways():
 	var is_floored = is_on_floor()
 	var slide_velocity = Vector3()
 	
-	if is_floored and Input.is_action_pressed("move_left"):
-		strafe_direction = strafe.left
-	elif is_floored and Input.is_action_pressed("move_right"):
-		strafe_direction = strafe.right
+	if is_floored and Input.is_action_just_pressed("move_left"):
+		current_strafe_position = (0) if (current_strafe_position - 1 < 0) else (current_strafe_position - 1)
+	elif is_floored and Input.is_action_just_pressed("move_right"):
+		current_strafe_position = (MAX_STRAFE_POSITION -1 ) if (current_strafe_position + 1 >= MAX_STRAFE_POSITION) else (current_strafe_position + 1)
 	
 	var target_pos = transform.origin
-	target_pos.x = strafe_direction.x * STRAFE_BOUNDARY
+	target_pos.x = strafe_position[current_strafe_position] * STRAFE_DISTANCE
 	var target_velocity = target_pos - transform.origin
 	slide_velocity = clamp_vector(target_velocity * S_SPEED, S_SPEED)
 	return slide_velocity
@@ -82,7 +83,6 @@ func jump():
 	if is_powering_jump:
 		jump_power += 1
 		jump_power = clamp(jump_power, 0, MAX_JUMP_POWER)
-		#print('jump_power: ', jump_power)
 	
 	if not is_jumping and Input.is_action_just_pressed("jump"):
 		is_powering_jump = true
