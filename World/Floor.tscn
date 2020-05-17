@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 50, 1, 50 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 100, 2, 100 )
+
+[sub_resource type="OpenSimplexNoise" id=3]
+octaves = 4
+period = 0.1
+persistence = 0.152
+lacunarity = 1.38
+
+[sub_resource type="NoiseTexture" id=4]
+width = 500
+height = 500
+noise = SubResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_texture = SubResource( 4 )
+roughness = 0.0
+
+[node name="Floor" type="RigidBody" groups=[
+"Floor",
+]]
+mode = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GroundCollision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 5 )

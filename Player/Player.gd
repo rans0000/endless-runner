@@ -1,5 +1,8 @@
 extends KinematicBody
 
+signal detect_empty_floor
+signal detect_obsolete_floor
+
 var gravity = -65
 var velocity = Vector3()
 var previous_speed = Vector3()
@@ -21,6 +24,9 @@ const MIN_JUMP_SPEED = 20
 const MAX_JUMP_FORWARD_RATIO = 0.3
 const MAX_JUMP_POWER = 20.0
 
+onready var front_feeler = $FrontFeeler
+onready var back_feeler = $BackFeeler
+
 func _physics_process(delta):
 	move_player(delta)
 
@@ -34,6 +40,7 @@ func move_player(delta):
 	velocity.y = jump_velocity.y
 	velocity.x = strafe_velocity.x
 	velocity = move_and_slide(velocity, Vector3.UP)
+	check_floor()
 
 func move_forward(delta):
 	var is_floored = is_on_floor()
@@ -97,8 +104,16 @@ func calculate_jump_power(jump_speed):
 	var speed_ratio = (jump_power/MAX_JUMP_POWER * MAX_JUMP_FORWARD_RATIO) * -velocity.z
 	var power = (MIN_JUMP_SPEED + speed_ratio )
 	vertical_speed += power
-	print(vertical_speed, ' : ', jump_power)
+	#print(vertical_speed, ' : ', jump_power)
 	return vertical_speed
+
+func check_floor():
+	if !front_feeler.is_colliding():
+		emit_signal("detect_empty_floor")
+	if back_feeler.is_colliding():
+		var target = back_feeler.get_collider()
+		if target.is_in_group("Floor"):
+			emit_signal("detect_obsolete_floor", target)
 
 func clamp_vector(vector, length):
 	var norm = vector.normalized()
