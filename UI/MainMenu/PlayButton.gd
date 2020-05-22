@@ -1,7 +1,7 @@
 extends Button
 
 func _ready():
-	pass
+	get_tree().paused = false
 
 
 func _on_play_button_pressed():

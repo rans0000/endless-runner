@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World/World.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/PauseMenu/PauseMenu.tscn" type="PackedScene" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 50, 1, 50 )
@@ -60,3 +61,6 @@ shape = SubResource( 6 )
 transform = Transform( -0.0750431, 0.713754, -0.696364, 0.0984102, 0.700225, 0.707107, 0.992312, -0.0154659, -0.122788, -20, 20, 0 )
 shadow_enabled = true
 directional_shadow_mode = 0
+
+[node name="PauseMenu" parent="." instance=ExtResource( 3 )]
+visible = false
