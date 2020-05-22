@@ -21,7 +21,7 @@ func create_floor():
 		var pos_z = -board_length * (i + 1)
 		floor_instance.global_transform.origin = last_floor + Vector3(0, 0, pos_z)
 		boards.push_back(floor_instance)
-	print(boards.size())
+	#print(boards.size())
 
 func delete_floor(target_floor):
 	#print('deleting...', target_floor)

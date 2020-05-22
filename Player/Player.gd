@@ -3,7 +3,7 @@ extends KinematicBody
 signal detect_empty_floor
 signal detect_obsolete_floor
 
-var gravity = -65
+var gravity = -9.3 * 8
 var velocity = Vector3()
 var previous_speed = Vector3()
 var strafe_position = [-1, 0, 1]
@@ -11,8 +11,8 @@ var current_strafe_position = 1
 const MAX_STRAFE_POSITION = 3
 
 const STRAFE_DISTANCE = 10
-const F_SPEED = 50
-const S_SPEED = 80
+const FORWARD_SPEED = 50
+const STRAFE_SPEED = 80
 const ACCELERATION = 1
 const DECELERATION = 3
 const FRICTION = 0.1
@@ -20,7 +20,7 @@ const FRICTION = 0.1
 var is_jumping = false
 var is_powering_jump = false
 var jump_power = 0
-const MIN_JUMP_SPEED = 20
+const MIN_JUMP_SPEED = 40
 const MAX_JUMP_FORWARD_RATIO = 0.3
 const MAX_JUMP_POWER = 20.0
 
@@ -53,7 +53,7 @@ func move_forward(delta):
 	
 	var fv = Vector3(0, 0, velocity.z)
 	if is_floored:
-		var new_pos = forward_velocity * F_SPEED
+		var new_pos = forward_velocity * FORWARD_SPEED
 		previous_speed = new_pos
 		var acceleration = DECELERATION
 		if forward_velocity.dot(fv) > 0:
@@ -74,7 +74,7 @@ func move_sideways():
 	var target_pos = transform.origin
 	target_pos.x = strafe_position[current_strafe_position] * STRAFE_DISTANCE
 	var target_velocity = target_pos - transform.origin
-	slide_velocity = clamp_vector(target_velocity * S_SPEED, S_SPEED)
+	slide_velocity = clamp_vector(target_velocity * STRAFE_SPEED, STRAFE_SPEED)
 	return slide_velocity
 
 func jump():
