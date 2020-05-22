@@ -40,9 +40,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -54.0
-margin_top = -49.5
+margin_top = -93.2691
 margin_right = 54.0
-margin_bottom = -10.5
+margin_bottom = -54.2691
 custom_fonts/font = SubResource( 1 )
 text = "PAUSED"
 
@@ -52,22 +52,35 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -51.0
-margin_top = 4.0
+margin_top = -39.7691
 margin_right = 51.0
-margin_bottom = 36.0
+margin_bottom = -7.76909
 custom_fonts/font = SubResource( 2 )
 text = "RESUME"
 
-[node name="MainMenuButton2" type="Button" parent="Panel"]
+[node name="MainMenuButton" type="Button" parent="Panel"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -51.0
-margin_top = 47.7
+margin_top = 3.93091
 margin_right = 51.0
-margin_bottom = 79.7
+margin_bottom = 35.9309
 custom_fonts/font = SubResource( 2 )
 text = "MAIN MENU"
+
+[node name="QuitButton" type="Button" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -51.0
+margin_top = 48.352
+margin_right = 51.0
+margin_bottom = 80.352
+custom_fonts/font = SubResource( 2 )
+text = "QUIT GAME"
 [connection signal="pressed" from="Panel/ResumeButton" to="." method="_on_resumebutton_pressed"]
-[connection signal="pressed" from="Panel/MainMenuButton2" to="." method="_on_mainmenu_button_pressed"]
+[connection signal="pressed" from="Panel/MainMenuButton" to="." method="_on_mainmenu_button_pressed"]
+[connection signal="pressed" from="Panel/QuitButton" to="." method="_on_quit_button_pressed"]
