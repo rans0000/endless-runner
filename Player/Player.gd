@@ -11,7 +11,7 @@ var current_strafe_position = 1
 const MAX_STRAFE_POSITION = 3
 
 const STRAFE_DISTANCE = 10
-const FORWARD_SPEED = 50
+const FORWARD_SPEED = 30
 const STRAFE_SPEED = 80
 const ACCELERATION = 1
 const DECELERATION = 3
@@ -20,8 +20,8 @@ const FRICTION = 0.1
 var is_jumping = false
 var is_powering_jump = false
 var jump_power = 0
-const MIN_JUMP_SPEED = 40
-const MAX_JUMP_FORWARD_RATIO = 0.3
+const MIN_JUMP_SPEED = 20
+const MAX_JUMP_FORWARD_RATIO = 0.8
 const MAX_JUMP_POWER = 20.0
 
 onready var front_feeler = $FrontFeeler

@@ -45,6 +45,9 @@ margin_right = 54.0
 margin_bottom = -54.2691
 custom_fonts/font = SubResource( 1 )
 text = "PAUSED"
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ResumeButton" type="Button" parent="Panel"]
 anchor_left = 0.5
@@ -57,6 +60,9 @@ margin_right = 51.0
 margin_bottom = -7.76909
 custom_fonts/font = SubResource( 2 )
 text = "RESUME"
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="MainMenuButton" type="Button" parent="Panel"]
 anchor_left = 0.5
@@ -69,6 +75,9 @@ margin_right = 51.0
 margin_bottom = 35.9309
 custom_fonts/font = SubResource( 2 )
 text = "MAIN MENU"
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="QuitButton" type="Button" parent="Panel"]
 anchor_left = 0.5
@@ -81,6 +90,9 @@ margin_right = 51.0
 margin_bottom = 80.352
 custom_fonts/font = SubResource( 2 )
 text = "QUIT GAME"
+__meta__ = {
+"_edit_lock_": true
+}
 [connection signal="pressed" from="Panel/ResumeButton" to="." method="_on_resumebutton_pressed"]
 [connection signal="pressed" from="Panel/MainMenuButton" to="." method="_on_mainmenu_button_pressed"]
 [connection signal="pressed" from="Panel/QuitButton" to="." method="_on_quit_button_pressed"]

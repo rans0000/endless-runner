@@ -19,11 +19,17 @@ font_data = ExtResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 800.0
 margin_bottom = 600.0
 color = Color( 0.294118, 0.0352941, 0.0901961, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Label" type="Label" parent="."]
 margin_top = 130.0
@@ -37,6 +43,9 @@ Runner"
 align = 1
 valign = 1
 uppercase = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="PlayButton" type="Button" parent="."]
 anchor_left = 0.5
@@ -53,6 +62,9 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.823529, 0.403922, 0.403922, 1 )
 custom_colors/font_color_pressed = Color( 0.623529, 0.270588, 0.270588, 1 )
 text = "PLAY"
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="QuitButton" type="Button" parent="."]
 anchor_left = 0.5
@@ -69,5 +81,8 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.823529, 0.403922, 0.403922, 1 )
 custom_colors/font_color_pressed = Color( 0.623529, 0.270588, 0.270588, 1 )
 text = "EXIT GAME"
+__meta__ = {
+"_edit_lock_": true
+}
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
