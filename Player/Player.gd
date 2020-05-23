@@ -10,7 +10,7 @@ var strafe_position = [-1, 0, 1]
 var current_strafe_position = 1
 const MAX_STRAFE_POSITION = 3
 
-const STRAFE_DISTANCE = 10
+const STRAFE_DISTANCE = 5
 const FORWARD_SPEED = 30
 const STRAFE_SPEED = 80
 const ACCELERATION = 1
