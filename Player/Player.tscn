@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Camera.gd" type="Script" id=2]
@@ -10,6 +10,9 @@ height = 1.5
 [sub_resource type="CapsuleMesh" id=2]
 radius = 0.75
 mid_height = 1.5
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.5, 0.025, 0.05 )
 
 [node name="Player" type="KinematicBody"]
 collision_layer = 4
@@ -24,18 +27,52 @@ script = ExtResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0 )
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0 )
 mesh = SubResource( 2 )
 material/0 = null
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="FrontFeeler" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, -200 )
 enabled = true
 cast_to = Vector3( 0, 100, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BackFeeler" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 120 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 250 )
 enabled = true
 cast_to = Vector3( 0, 100, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WallFeeler" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -0.8 )
+collision_mask = 2
+
+[node name="WallChecker" type="Area" parent="."]
+editor/display_folded = true
+collision_layer = 4
+collision_mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WallCollisionFeeler" type="CollisionShape" parent="WallChecker"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, -0.8 )
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+[connection signal="body_exited" from="WallChecker" to="." method="_on_slidewall_exited"]

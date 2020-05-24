@@ -17,6 +17,9 @@ const ACCELERATION = 1
 const DECELERATION = 3
 const FRICTION = 0.1
 
+var is_climbing = false
+const CLIMB_SPEED = 10
+
 var is_jumping = false
 var is_powering_jump = false
 var jump_power = 0
@@ -26,9 +29,23 @@ const MAX_JUMP_POWER = 20.0
 
 onready var front_feeler = $FrontFeeler
 onready var back_feeler = $BackFeeler
+onready var wall_feeler = $WallFeeler
 
 func _physics_process(delta):
-	move_player(delta)
+	check_for_slide_start(delta)
+	if is_climbing:
+		climb_player(delta)
+	else:
+		move_player(delta)
+
+
+func check_for_slide_start(delta):
+	if Input.is_action_just_pressed("jump"):
+		if wall_feeler.is_colliding():
+			var target = wall_feeler.get_collider()
+			if target.is_in_group("SlideWall"):
+				is_climbing = true
+
 
 func move_player(delta):
 	velocity.y += delta * gravity
@@ -104,7 +121,6 @@ func calculate_jump_power(jump_speed):
 	var speed_ratio = (jump_power/MAX_JUMP_POWER * MAX_JUMP_FORWARD_RATIO) * -velocity.z
 	var power = (MIN_JUMP_SPEED + speed_ratio )
 	vertical_speed += power
-	#print(vertical_speed, ' : ', jump_power)
 	return vertical_speed
 
 func check_floor():
@@ -120,3 +136,12 @@ func clamp_vector(vector, length):
 	if vector.length() > length:
 		vector = norm * length
 	return vector
+
+
+func climb_player(delta):
+	var vertical_speed = Vector3(0, CLIMB_SPEED, -20)
+	velocity = move_and_slide(vertical_speed, Vector3.UP)
+
+func _on_slidewall_exited(body):
+	if body.is_in_group("SlideWall"):
+		is_climbing = false
