@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://World/Floor.gd" type="Script" id=1]
-[ext_resource path="res://World/Tree/Tree_Canopy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://World/Tree/Tree_Pine.tscn" type="PackedScene" id=3]
-[ext_resource path="res://World/Tree/Tree_Plump.tscn" type="PackedScene" id=4]
-[ext_resource path="res://World/Ground/Ground.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/House/House_Single.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/Tree/Tree_Canopy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/Tree/Tree_Pine.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Tree/Tree_Plump.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/Ground/Ground.tscn" type="PackedScene" id=6]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 50, 1, 50 )
@@ -45,7 +46,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
-trees = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
+houses = [ ExtResource( 2 ) ]
+trees = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ]
 
 [node name="GroundCollision" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
@@ -69,4 +71,4 @@ visible = false
 mesh = SubResource( 6 )
 material/0 = SubResource( 8 )
 
-[node name="Ground" parent="." instance=ExtResource( 5 )]
+[node name="Ground" parent="." instance=ExtResource( 6 )]
