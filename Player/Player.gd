@@ -15,7 +15,7 @@ const MAX_STRAFE_POSITION = 3
 
 var state = { idle='Idle', jump_start='Jump_Start', jump_end='Jump_End', move='Move' }
 var curr_state = state.idle
-const STRAFE_DISTANCE = 5
+const STRAFE_DISTANCE = 2.5
 const FORWARD_SPEED = 30
 const STRAFE_SPEED = 80
 const ACCELERATION = 1

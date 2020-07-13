@@ -3,7 +3,7 @@ extends StaticBody
 onready var segments = [preload("res://World/Obstacles/ObstacleSmall.tscn"), preload("res://World/Obstacles/ObstacleMedium.tscn"), preload("res://World/Obstacles/ObstacleHigh.tscn")]
 
 var rng = RandomNumberGenerator.new()
-const SEGMENT_WIDTH = 5
+const SEGMENT_WIDTH = 2.5
 
 func _ready():
 	build_wall_segments()
