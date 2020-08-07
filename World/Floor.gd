@@ -52,6 +52,8 @@ func populate_with_homes():
 		var side = ( -1 if (rng.randi_range(0,1) == 0) else 1 )
 		var pos_x = (MIN_TREE_POS + (HOME_LENGTH / 2)) * side
 		home.transform.origin = Vector3(pos_x, 0, board_length/2)
+		if side == -1:
+			home.rotate_y(deg2rad(180))
 	return has_home
 
 
