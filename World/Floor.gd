@@ -70,4 +70,5 @@ func populate_with_trees(has_home = false):
 		var the_tree = trees[tree_type].instance()
 		add_child(the_tree)
 		the_tree.transform.origin = Vector3(pos_x, 0, pos_z)
+		the_tree.rotate_y(deg2rad(rng.randi_range(0,360)))
 	pass
