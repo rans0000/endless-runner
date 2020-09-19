@@ -68,6 +68,7 @@ look_back={
 [layer_names]
 
 3d_physics/layer_1="environment"
+3d_render/layer_2="Numbers"
 3d_physics/layer_2="hurdles"
 3d_physics/layer_3="player"
 

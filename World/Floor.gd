@@ -7,8 +7,8 @@ export (Array, PackedScene) var houses
 export (Array, PackedScene) var trees
 
 var board_length = 100
-var MIN_WALL_DIST = 30
-var MAX_WALL_DIST = 80
+var MIN_WALL_DIST = 10
+var MAX_WALL_DIST = 30
 var MIN_TREES = 10
 var MAX_TREES = 30
 var MIN_TREE_POS = 5
@@ -72,3 +72,7 @@ func populate_with_trees(has_home = false):
 		the_tree.transform.origin = Vector3(pos_x, 0, pos_z)
 		the_tree.rotate_y(deg2rad(rng.randi_range(0,360)))
 	pass
+
+
+func _on_number_feeler_entered(body):
+	print(body)
