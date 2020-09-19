@@ -19,7 +19,6 @@ var HOME_LENGTH = 30
 
 func _ready():
 	rng.randomize()
-	populate_with_walls()
 	populate_environment()
 
 
@@ -31,7 +30,7 @@ func populate_environment():
 
 func populate_with_walls():
 	var pos = rng.randi_range(0, MIN_WALL_DIST)
-	pos = pos - (board_length / 2)
+	#pos = pos - (board_length / 2)
 	
 	while pos < board_length:
 		if pos <  - (board_length / 2):
@@ -71,8 +70,8 @@ func populate_with_trees(has_home = false):
 		add_child(the_tree)
 		the_tree.transform.origin = Vector3(pos_x, 0, pos_z)
 		the_tree.rotate_y(deg2rad(rng.randi_range(0,360)))
-	pass
 
 
 func _on_number_feeler_entered(body):
-	print(body)
+#	print(self, " : ", body.name)
+	populate_with_walls()
