@@ -73,7 +73,9 @@ look_back={
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
+quality/filters/anisotropic_filter_level=1
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"
+quality/filters/use_nearest_mipmap_filter=true
+quality/filters/msaa=2
+environment/default_environment="res://World/shady_noon_env.tres"

@@ -6,7 +6,7 @@ size = Vector3( 2.5, 3, 2 )
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.0431373, 0.729412, 0.113725, 1 )
 metallic_specular = 0.0
-roughness = 0.0
+roughness = 0.55
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 1.25, 1.5, 1 )

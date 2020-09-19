@@ -17,7 +17,7 @@ var state = { idle='Idle', jump_start='Jump_Start', jump_end='Jump_End', move='M
 var curr_state = state.idle
 const STRAFE_DISTANCE = 2.5
 const FORWARD_SPEED = 30
-const STRAFE_SPEED = 80
+const STRAFE_SPEED = 20
 const ACCELERATION = 1
 const DECELERATION = 3
 const FRICTION = 0.1
