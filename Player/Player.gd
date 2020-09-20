@@ -28,9 +28,9 @@ const CLIMB_SPEED = 10
 var is_jumping = false
 var is_powering_jump = false
 var jump_power = 0
-const MIN_JUMP_SPEED = 20
-const MAX_JUMP_FORWARD_RATIO = 0.8
-const MAX_JUMP_POWER = 20.0
+const MIN_JUMP_SPEED = 12
+const MAX_JUMP_FORWARD_RATIO = 0.3
+const MAX_JUMP_POWER = 2
 
 onready var front_feeler = $FrontFeeler
 onready var back_feeler = $BackFeeler
@@ -77,7 +77,7 @@ func move_forward(delta):
 	elif is_floored and Input.is_action_pressed("move_stop"):
 		forward_velocity = Vector3.BACK
 	
-	var fv = Vector3(0, 0, velocity.z)
+	var fv = clamp_vector(Vector3(0, 0, velocity.z), FORWARD_SPEED)
 	if is_floored:
 		var new_pos = forward_velocity * FORWARD_SPEED
 		previous_speed = new_pos
@@ -92,7 +92,8 @@ func move_forward(delta):
 
 func set_run_animation(forward_velocity):
 	var speed = forward_velocity.length()
-	if(speed > 0.5 and speed < FORWARD_SPEED - 0.5):
+	
+	if(speed > 0.5 and speed < FORWARD_SPEED + 0.5):
 		if curr_state != state.move:
 			curr_state = state.move
 			playback.travel(curr_state)
@@ -175,8 +176,8 @@ func clamp_vector(vector, length):
 
 
 func climb_player(delta):
-	var vertical_speed = Vector3(0, CLIMB_SPEED, -20)
-	velocity = move_and_slide(vertical_speed, Vector3.UP)
+	var jump_velocity = Vector3(0, CLIMB_SPEED, -(FORWARD_SPEED * MAX_JUMP_FORWARD_RATIO))
+	velocity = move_and_slide(jump_velocity, Vector3.UP)
 
 
 func _on_slidewall_exited(body):

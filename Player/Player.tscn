@@ -63,7 +63,6 @@ __meta__ = {
 }
 
 [node name="WallFeeler" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, 0 )
 enabled = true
 cast_to = Vector3( 0, 0, -0.8 )
 collision_mask = 2
@@ -72,15 +71,14 @@ __meta__ = {
 }
 
 [node name="WallChecker" type="Area" parent="."]
-editor/display_folded = true
 collision_layer = 4
-collision_mask = 2
+collision_mask = 0
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="WallCollisionFeeler" type="CollisionShape" parent="WallChecker"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, -0.8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, -0.8 )
 shape = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true
@@ -89,9 +87,10 @@ __meta__ = {
 [node name="PlayerModel" parent="." instance=ExtResource( 3 )]
 transform = Transform( -2, 0, -1.74846e-007, 0, 2, 0, 1.74846e-007, 0, -2, 0, 0, 0 )
 
-[node name="NumberRigid" type="RigidBody" parent="."]
+[node name="NumberSpawner" type="RigidBody" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100 )
 
-[node name="CollisionShape" type="CollisionShape" parent="NumberRigid"]
+[node name="CollisionShape" type="CollisionShape" parent="NumberSpawner"]
 shape = SubResource( 4 )
 [connection signal="body_exited" from="WallChecker" to="." method="_on_slidewall_exited"]

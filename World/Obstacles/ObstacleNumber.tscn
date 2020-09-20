@@ -16,7 +16,7 @@ extents = Vector3( 1.25, 1, 0.15 )
 [sub_resource type="PlaneMesh" id=4]
 size = Vector2( 5, 5 )
 
-[node name="ObstacleSmall" type="StaticBody" groups=[
+[node name=" sss" type="StaticBody" groups=[
 "SlideWall",
 ]]
 collision_layer = 2
