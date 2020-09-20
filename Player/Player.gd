@@ -3,6 +3,7 @@ extends KinematicBody
 signal detect_empty_floor
 signal detect_obsolete_floor
 
+onready var Utils = get_node("/root/Utils")
 onready var animationTree = $PlayerModel/AnimationTree
 onready var playback = animationTree.get('parameters/playback')
 
@@ -41,19 +42,7 @@ func _ready():
 	playback.start(state.idle)
 
 func _physics_process(delta):
-	check_for_slide_start(delta)
-	if is_climbing:
-		climb_player(delta)
-	else:
-		move_player(delta)
-
-
-func check_for_slide_start(delta):
-	if Input.is_action_just_pressed("jump"):
-		if wall_feeler.is_colliding():
-			var target = wall_feeler.get_collider()
-			if target.is_in_group("SlideWall"):
-				is_climbing = true
+	move_player(delta)
 
 
 func move_player(delta):
@@ -77,7 +66,7 @@ func move_forward(delta):
 	elif is_floored and Input.is_action_pressed("move_stop"):
 		forward_velocity = Vector3.BACK
 	
-	var fv = clamp_vector(Vector3(0, 0, velocity.z), FORWARD_SPEED)
+	var fv = Utils.clamp_vector(Vector3(0, 0, velocity.z), FORWARD_SPEED)
 	if is_floored:
 		var new_pos = forward_velocity * FORWARD_SPEED
 		previous_speed = new_pos
@@ -117,7 +106,7 @@ func move_sideways():
 	var target_pos = transform.origin
 	target_pos.x = strafe_position[current_strafe_position] * STRAFE_DISTANCE
 	var target_velocity = target_pos - transform.origin
-	slide_velocity = clamp_vector(target_velocity * STRAFE_SPEED, STRAFE_SPEED)
+	slide_velocity = Utils.clamp_vector(target_velocity * STRAFE_SPEED, STRAFE_SPEED)
 	return slide_velocity
 
 
@@ -168,18 +157,8 @@ func check_floor():
 			emit_signal("detect_obsolete_floor", target)
 
 
-func clamp_vector(vector, length):
-	var norm = vector.normalized()
-	if vector.length() > length:
-		vector = norm * length
-	return vector
-
-
-func climb_player(delta):
-	var jump_velocity = Vector3(0, CLIMB_SPEED, -(FORWARD_SPEED * MAX_JUMP_FORWARD_RATIO))
-	velocity = move_and_slide(jump_velocity, Vector3.UP)
-
-
-func _on_slidewall_exited(body):
-	if body.is_in_group("SlideWall"):
-		is_climbing = false
+func on_collide_number(award_points):
+	if award_points:
+		velocity = velocity + (velocity * .5)
+	else:
+		velocity = velocity / 2

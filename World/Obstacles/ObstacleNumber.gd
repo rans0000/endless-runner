@@ -1,14 +1,11 @@
-extends StaticBody
+extends Area
 
+onready var Utils = get_node("/root/Utils")
 onready var segments = [preload("res://World/Numbers/Num_0.tscn"),preload("res://World/Numbers/Num_1.tscn"),preload("res://World/Numbers/Num_2.tscn"),preload("res://World/Numbers/Num_3.tscn"),preload("res://World/Numbers/Num_4.tscn"),preload("res://World/Numbers/Num_5.tscn"),preload("res://World/Numbers/Num_6.tscn"),preload("res://World/Numbers/Num_7.tscn"),preload("res://World/Numbers/Num_8.tscn"),preload("res://World/Numbers/Num_9.tscn")]
 
 var rng = RandomNumberGenerator.new()
 const SEGMENT_WIDTH = 1.2
 const SEGMENT_HALF_WIDTH = SEGMENT_WIDTH / 2
-const puzzle_number = 5
-const act_multiply = "multiply"
-const act_division = "division"
-var action = act_multiply
 const MAX_NUMBER = 100
 var current_num = 0;
 
@@ -32,3 +29,14 @@ func build_number_mesh(current_num):
 		num_mesh.transform.origin = Vector3(pos_x, 0, 0)
 		pos_x = pos_x + SEGMENT_WIDTH
 		iterator += 1
+
+
+func self_destruct(award_points):
+	queue_free()
+
+
+func _on_number_body_entered(body):
+	if body.has_method("on_collide_number"):
+		var award_points = Utils.number_hit_test(current_num)
+		body.on_collide_number(award_points)
+		self_destruct(award_points)
