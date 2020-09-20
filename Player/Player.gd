@@ -6,6 +6,7 @@ signal detect_obsolete_floor
 onready var Utils = get_node("/root/Utils")
 onready var animationTree = $PlayerModel/AnimationTree
 onready var playback = animationTree.get('parameters/playback')
+onready var forward_timer = $ForwardSpeedTimer
 
 var gravity = -9.3 * 8
 var velocity = Vector3()
@@ -16,8 +17,11 @@ const MAX_STRAFE_POSITION = 3
 
 var state = { idle='Idle', jump_start='Jump_Start', jump_end='Jump_End', move='Move' }
 var curr_state = state.idle
+var forward_speed = 30
+const REGULAR_FORWARD_SPEED = 30
+const FORWARD_BONUS_SPEED = 50
+const FORWARD_PENALTY_SPEED = 10
 const STRAFE_DISTANCE = 2.5
-const FORWARD_SPEED = 30
 const STRAFE_SPEED = 20
 const ACCELERATION = 1
 const DECELERATION = 3
@@ -66,9 +70,9 @@ func move_forward(delta):
 	elif is_floored and Input.is_action_pressed("move_stop"):
 		forward_velocity = Vector3.BACK
 	
-	var fv = Utils.clamp_vector(Vector3(0, 0, velocity.z), FORWARD_SPEED)
+	var fv = Utils.clamp_vector(Vector3(0, 0, velocity.z), forward_speed)
 	if is_floored:
-		var new_pos = forward_velocity * FORWARD_SPEED
+		var new_pos = forward_velocity * forward_speed
 		previous_speed = new_pos
 		var acceleration = DECELERATION
 		if forward_velocity.dot(fv) > 0:
@@ -82,11 +86,11 @@ func move_forward(delta):
 func set_run_animation(forward_velocity):
 	var speed = forward_velocity.length()
 	
-	if(speed > 0.5 and speed < FORWARD_SPEED + 0.5):
+	if(speed > 0.5 and speed < forward_speed + 0.5):
 		if curr_state != state.move:
 			curr_state = state.move
 			playback.travel(curr_state)
-		var run_speed = speed / FORWARD_SPEED
+		var run_speed = speed / forward_speed
 		animationTree.set('parameters/Move/blend_position', run_speed)
 	elif speed < 0.5:
 		if curr_state != state.idle:
@@ -159,6 +163,12 @@ func check_floor():
 
 func on_collide_number(award_points):
 	if award_points:
+		forward_timer.start()
+		forward_speed = FORWARD_BONUS_SPEED
 		velocity = velocity + (velocity * .5)
 	else:
+		forward_speed = FORWARD_PENALTY_SPEED
 		velocity = velocity / 2
+
+func _on_forward_timer_timeout():
+	forward_speed = REGULAR_FORWARD_SPEED
