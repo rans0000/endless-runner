@@ -65,13 +65,14 @@ func move_forward(delta):
 	var is_floored = is_on_floor()
 	var forward_velocity = Vector3()
 	
-	if is_floored and Input.is_action_pressed("move_forward"):
-		forward_velocity += Vector3.FORWARD
-	elif is_floored and Input.is_action_pressed("move_stop"):
-		forward_velocity = Vector3.BACK
+#	if is_floored and Input.is_action_pressed("move_forward"):
+#		forward_velocity += Vector3.FORWARD
+#	elif is_floored and Input.is_action_pressed("move_stop"):
+#		forward_velocity = Vector3.BACK
 	
 	var fv = Utils.clamp_vector(Vector3(0, 0, velocity.z), forward_speed)
 	if is_floored:
+		forward_velocity += Vector3.FORWARD
 		var new_pos = forward_velocity * forward_speed
 		previous_speed = new_pos
 		var acceleration = DECELERATION
