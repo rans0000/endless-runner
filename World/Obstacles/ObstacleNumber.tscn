@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://World/Obstacles/ObstacleNumber.gd" type="Script" id=1]
 [ext_resource path="res://Models/Numbers/coin.glb" type="PackedScene" id=2]
@@ -7,16 +7,36 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.25, 1, 0.15 )
 
-[sub_resource type="CubeMesh" id=2]
-size = Vector3( 2.5, 3, 2 )
-
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.0431373, 0.729412, 0.113725, 1 )
-metallic_specular = 0.0
-roughness = 0.55
-
 [sub_resource type="PlaneMesh" id=4]
 size = Vector2( 5, 5 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "jump_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CoinNumber:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 5, 0.005 ), Vector3( 0, 1.00032, 0.00540638 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CoinMesh:translation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 5, 0 ), Vector3( 0, 1, 0 ) ]
+}
 
 [node name="ObstacleNumber" type="Area" groups=[
 "SlideWall",
@@ -29,20 +49,18 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
-visible = false
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
-
 [node name="GridRef" type="MeshInstance" parent="."]
 visible = false
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="Scene Root" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 1, 0 )
+[node name="CoinMesh" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 5, 0 )
 
 [node name="CoinNumber" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00032, 0.00540638 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0.005 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "jump_in"
+anims/jump_in = SubResource( 5 )
 [connection signal="body_entered" from="." to="." method="_on_number_body_entered"]
