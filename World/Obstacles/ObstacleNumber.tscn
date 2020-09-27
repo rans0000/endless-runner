@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://World/Obstacles/ObstacleNumber.gd" type="Script" id=1]
 [ext_resource path="res://Models/Numbers/coin.glb" type="PackedScene" id=2]
+[ext_resource path="res://World/Obstacles/CoinNumber.tscn" type="PackedScene" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.25, 1, 0.15 )
@@ -41,4 +42,7 @@ material/0 = null
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="CoinNumber" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00032, 0.00540638 )
 [connection signal="body_entered" from="." to="." method="_on_number_body_entered"]

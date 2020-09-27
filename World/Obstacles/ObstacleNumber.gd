@@ -2,6 +2,7 @@ extends Area
 
 onready var Utils = get_node("/root/Utils")
 onready var segments = [preload("res://World/Numbers/Num_0.tscn"),preload("res://World/Numbers/Num_1.tscn"),preload("res://World/Numbers/Num_2.tscn"),preload("res://World/Numbers/Num_3.tscn"),preload("res://World/Numbers/Num_4.tscn"),preload("res://World/Numbers/Num_5.tscn"),preload("res://World/Numbers/Num_6.tscn"),preload("res://World/Numbers/Num_7.tscn"),preload("res://World/Numbers/Num_8.tscn"),preload("res://World/Numbers/Num_9.tscn")]
+onready var coin_number = $CoinNumber
 
 var rng = RandomNumberGenerator.new()
 const SEGMENT_WIDTH = 1.2
@@ -12,7 +13,8 @@ var current_num = 0;
 func _ready():
 	rng.randomize()
 	current_num = rng.randi_range(0, MAX_NUMBER)
-	build_number_mesh(current_num)
+#	build_number_mesh(current_num)
+	coin_number.set_number(current_num)
 
 
 func build_number_mesh(current_num):
