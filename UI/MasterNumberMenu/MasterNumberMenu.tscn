@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/MasterNumberMenu/MasterNumberMenu.gd" type="Script" id=1]
+[ext_resource path="res://fonts/RacingSansOne-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/AnonymousPro-Bold.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+outline_color = Color( 0.517647, 0.145098, 0.145098, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[node name="MasterNumberMenu" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+margin_bottom = 150.0
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 348.414, 208.414 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -102.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.74902, 0.207843, 0.207843, 1 )
+text = "Select Target Number"
+align = 1
+
+[node name="HSlider" type="HSlider" parent="."]
+anchor_right = 1.0
+margin_left = 100.0
+margin_top = 60.0
+margin_right = -100.0
+min_value = 2.0
+max_value = 10.0
+value = 5.0
+rounded = true
+tick_count = 9
+ticks_on_borders = true
+
+[node name="MasterValueLabel" type="Label" parent="."]
+anchor_left = 0.25
+anchor_right = 0.75
+margin_top = 100.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.74902, 0.207843, 0.207843, 1 )
+text = "0"
+align = 1
+
+[node name="SelectBtn" type="Button" parent="."]
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -50.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.560784, 0.223529, 0.223529, 1 )
+custom_colors/font_color_pressed = Color( 0.376471, 0.121569, 0.203922, 1 )
+text = "SELECT"
+
+[node name="CancelBtn" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -50.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.560784, 0.223529, 0.223529, 1 )
+custom_colors/font_color_pressed = Color( 0.376471, 0.121569, 0.203922, 1 )
+text = "CANCEL"
+[connection signal="value_changed" from="HSlider" to="." method="_on_master_value_slider_changed"]
+[connection signal="button_up" from="SelectBtn" to="." method="_on_select_btn_up"]
+[connection signal="button_up" from="CancelBtn" to="." method="_on_cancel_btn_up"]
