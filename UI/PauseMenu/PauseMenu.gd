@@ -22,6 +22,7 @@ func toggle_pause():
 
 
 func _on_mainmenu_button_pressed():
+	Utils.puzzle_number = Utils.default_puzzle_number
 	get_tree().change_scene("res://UI/MainMenu/MainMenu.tscn")
 
 

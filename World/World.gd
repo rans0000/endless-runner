@@ -2,6 +2,8 @@ extends Spatial
 
 const master_floor = preload("res://World/Floor.tscn")
 
+onready var number_menu = $MasterNumberMenu
+
 const BOARD_SET_LENGTH = 3
 var boards = []
 var board_length = 100
@@ -11,6 +13,9 @@ func _ready():
 	boards.push_back(start_floor)
 	$Player.connect("detect_empty_floor", self, "create_floor")
 	$Player.connect("detect_obsolete_floor", self, "delete_floor")
+	get_tree().paused = true
+	number_menu.visible = true
+
 
 func create_floor():
 	var last_floor = boards[-1].global_transform.origin
@@ -22,6 +27,7 @@ func create_floor():
 		floor_instance.global_transform.origin = last_floor + Vector3(0, 0, pos_z)
 		boards.push_back(floor_instance)
 	#print(boards.size())
+
 
 func delete_floor(target_floor):
 	#print('deleting...', target_floor)

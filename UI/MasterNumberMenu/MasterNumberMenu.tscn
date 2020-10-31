@@ -60,8 +60,9 @@ text = "0"
 align = 1
 
 [node name="SelectBtn" type="Button" parent="."]
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = -50.0
@@ -74,12 +75,11 @@ custom_colors/font_color_pressed = Color( 0.376471, 0.121569, 0.203922, 1 )
 text = "SELECT"
 
 [node name="CancelBtn" type="Button" parent="."]
-anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+margin_left = 10.0
 margin_top = -50.0
-margin_right = -10.0
 margin_bottom = -10.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )

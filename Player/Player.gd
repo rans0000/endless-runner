@@ -27,7 +27,6 @@ const ACCELERATION = 1
 const DECELERATION = 3
 const FRICTION = 0.1
 
-var is_climbing = false
 const CLIMB_SPEED = 10
 
 var is_jumping = false
@@ -39,7 +38,6 @@ const MAX_JUMP_POWER = 2
 
 onready var front_feeler = $FrontFeeler
 onready var back_feeler = $BackFeeler
-onready var wall_feeler = $WallFeeler
 
 
 func _ready():

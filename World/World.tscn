@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://World/World.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/shady_noon_env.tres" type="Environment" id=3]
 [ext_resource path="res://World/Ground/Ground.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/PauseMenu/PauseMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/MasterNumberMenu/MasterNumberMenu.tscn" type="PackedScene" id=6]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 50, 1, 50 )
@@ -86,3 +87,6 @@ directional_shadow_mode = 0
 
 [node name="PauseMenu" parent="." instance=ExtResource( 5 )]
 visible = false
+
+[node name="MasterNumberMenu" parent="." instance=ExtResource( 6 )]
+pause_mode = 2

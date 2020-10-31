@@ -1,9 +1,7 @@
 extends Node
 
-var puzzle_number = 5
-var act_multiply = "multiply"
-var act_division = "division"
-var action = act_division
+const default_puzzle_number = 5
+var puzzle_number = default_puzzle_number
 
 
 func clamp_vector(vector, length):
@@ -14,10 +12,5 @@ func clamp_vector(vector, length):
 
 
 func number_hit_test(current_num):
-	var award_points = false
-	match action:
-		act_division: 
-			award_points = true if current_num % puzzle_number == 0 else false
-		act_multiply: 
-			award_points = true if puzzle_number % current_num == 0  else false
+	var award_points = true if current_num % puzzle_number == 0 else false
 	return award_points
