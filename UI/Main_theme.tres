@@ -1,0 +1,44 @@
+[gd_resource type="Theme" load_steps=12 format=2]
+
+[ext_resource path="res://fonts/PoetsenOne-Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/images/button_pressed_tex.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/button_hover_tex.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/button_normal_tex.png" type="Texture" id=4]
+[ext_resource path="res://fonts/AutourOne-Regular.otf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 233, 76 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 233, 76 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 233, 76 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 233, 76 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 5 )
+
+[resource]
+default_font = SubResource( 2 )
+Button/colors/font_color = Color( 0.972549, 0.694118, 0.584314, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 1 )
+Button/styles/disabled = null
+Button/styles/focus = SubResource( 5 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 6 )
