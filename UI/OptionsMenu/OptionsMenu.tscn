@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://UI/Main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://UI/OptionsMenu/OptionsMenu.gd" type="Script" id=2]
@@ -7,6 +7,12 @@
 [ext_resource path="res://fonts/PoetsenOne-Regular.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/images/btn_close.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/btn_close_hover.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -25,6 +31,9 @@ margin_left = 0.773743
 margin_right = 0.773743
 texture = ExtResource( 3 )
 expand = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TabContainer" type="TabContainer" parent="."]
 editor/display_folded = true
@@ -143,11 +152,19 @@ margin_right = 300.0
 margin_bottom = 230.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 11
+size_flags_vertical = 11
 border_color = Color( 0.4, 0.172549, 0.172549, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TabContainer2" type="TabContainer" parent="ReferenceRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CONTROLS" type="Tabs" parent="ReferenceRect/TabContainer2"]
 editor/display_folded = true
@@ -158,106 +175,160 @@ margin_top = 65.0
 margin_right = -10.0
 margin_bottom = -10.0
 mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Container" type="Control" parent="ReferenceRect/TabContainer2/CONTROLS"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container"]
-editor/display_folded = true
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 60.0
-margin_right = -20.0
-margin_bottom = -20.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer"]
-margin_right = 540.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer"]
-margin_right = 268.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer/MarginContainer"]
-margin_right = 268.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-text = "Move"
-align = 2
-
-[node name="MarginContainer2" type="MarginContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer"]
-editor/display_folded = true
-margin_left = 272.0
-margin_right = 540.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-
-[node name="Label2" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer/MarginContainer2"]
-margin_right = 268.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-text = "W, UP Arrow"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer"]
-editor/display_folded = true
-margin_top = 25.0
-margin_right = 540.0
-margin_bottom = 46.0
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer2"]
-editor/display_folded = true
-margin_right = 268.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer2/MarginContainer"]
-margin_right = 268.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-text = "Move"
-align = 2
-
-[node name="MarginContainer2" type="MarginContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer2"]
-editor/display_folded = true
-margin_left = 272.0
-margin_right = 540.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-
-[node name="Label2" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer2/MarginContainer2"]
-margin_right = 268.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-text = "W, UP Arrow"
 
 [node name="GridContainer" type="GridContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container"]
-editor/display_folded = true
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+margin_top = -63.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 10
+
+[node name="Panel" type="PanelContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer"]
+editor/display_folded = true
+margin_right = 580.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="GridContainer" type="GridContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel"]
+editor/display_folded = true
+margin_right = 580.0
+margin_bottom = 24.0
+custom_constants/hseparation = 20
 columns = 2
 
-[node name="Label" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer"]
-margin_right = 288.0
-margin_bottom = 21.0
+[node name="Action" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel/GridContainer"]
+margin_right = 280.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
-text = "mmmm"
+size_flags_stretch_ratio = 0.5
+custom_fonts/font = SubResource( 3 )
+text = "Strafe Left"
 align = 2
+valign = 1
 
-[node name="Label2" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer"]
-margin_left = 292.0
+[node name="Key" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel/GridContainer"]
+margin_left = 300.0
+margin_top = 1.0
 margin_right = 580.0
-margin_bottom = 21.0
+margin_bottom = 22.0
 size_flags_horizontal = 3
-text = "2222"
+size_flags_stretch_ratio = 0.5
+text = "A, Arrow Up"
+valign = 1
+
+[node name="Panel2" type="PanelContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer"]
+editor/display_folded = true
+margin_top = 34.0
+margin_right = 580.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="GridContainer" type="GridContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel2"]
+margin_right = 580.0
+margin_bottom = 24.0
+custom_constants/hseparation = 20
+columns = 2
+
+[node name="Action" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel2/GridContainer"]
+margin_right = 280.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+custom_fonts/font = SubResource( 3 )
+text = "Strafe Right"
+align = 2
+valign = 1
+
+[node name="Key" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel2/GridContainer"]
+margin_left = 300.0
+margin_top = 1.0
+margin_right = 580.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "D, Arrow Up"
+valign = 1
+
+[node name="Panel3" type="PanelContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer"]
+editor/display_folded = true
+margin_top = 68.0
+margin_right = 580.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="GridContainer" type="GridContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel3"]
+margin_right = 580.0
+margin_bottom = 24.0
+custom_constants/hseparation = 20
+columns = 2
+
+[node name="Action" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel3/GridContainer"]
+margin_right = 280.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+custom_fonts/font = SubResource( 3 )
+text = "Jump"
+align = 2
+valign = 1
+
+[node name="Key" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel3/GridContainer"]
+margin_left = 300.0
+margin_top = 1.0
+margin_right = 580.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Space"
+valign = 1
+
+[node name="Panel4" type="PanelContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer"]
+editor/display_folded = true
+margin_top = 102.0
+margin_right = 580.0
+margin_bottom = 126.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="GridContainer" type="GridContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel4"]
+margin_right = 580.0
+margin_bottom = 24.0
+custom_constants/hseparation = 20
+columns = 2
+
+[node name="Action" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel4/GridContainer"]
+margin_right = 280.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+custom_fonts/font = SubResource( 3 )
+text = "Pause/Options"
+align = 2
+valign = 1
+
+[node name="Key" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel4/GridContainer"]
+margin_left = 300.0
+margin_top = 1.0
+margin_right = 580.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Esc"
+valign = 1
 
 [node name="HELP" type="Tabs" parent="ReferenceRect/TabContainer2"]
 editor/display_folded = true
@@ -269,6 +340,10 @@ margin_top = 65.0
 margin_right = -10.0
 margin_bottom = -10.0
 mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Container2" type="Control" parent="ReferenceRect/TabContainer2/HELP"]
 anchor_right = 1.0
@@ -309,6 +384,10 @@ margin_top = 65.0
 margin_right = -10.0
 margin_bottom = -10.0
 mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Container2" type="Control" parent="ReferenceRect/TabContainer2/ABOUT"]
 anchor_right = 1.0
@@ -353,4 +432,7 @@ texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 7 )
 texture_focused = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
 [connection signal="pressed" from="ReferenceRect/TextureButton" to="." method="_on_close_btn_pressed"]
