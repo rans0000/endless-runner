@@ -6,6 +6,7 @@
 [ext_resource path="res://UI/OptionsMenu/OptionsMenu.tscn" type="PackedScene" id=4]
 
 [node name="MainMenu" type="Control"]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -1.802

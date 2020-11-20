@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/Main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://UI/OptionsMenu/OptionsMenu.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/controls-screen.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/bg_gradient_tex.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/controls-screen.png" type="Texture" id=4]
+[ext_resource path="res://fonts/PoetsenOne-Regular.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/images/btn_close.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/btn_close_hover.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 5 )
 
 [node name="OptionsMenu" type="Control"]
 anchor_right = 1.0
@@ -10,13 +18,17 @@ anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
-[node name="MenuBg" type="ColorRect" parent="."]
+[node name="MenuBg" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
+margin_left = 0.773743
+margin_right = 0.773743
+texture = ExtResource( 3 )
+expand = true
 
 [node name="TabContainer" type="TabContainer" parent="."]
 editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -80.0
@@ -26,18 +38,19 @@ tab_align = 0
 editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 39.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 10.0
+margin_top = 65.0
+margin_right = -10.0
+margin_bottom = -10.0
 rect_clip_content = true
+mouse_default_cursor_shape = 2
 
 [node name="TextureRect" type="TextureRect" parent="TabContainer/Controls"]
 anchor_right = 1.0
 margin_bottom = 600.0
 rect_scale = Vector2( 1, 0.95 )
 rect_clip_content = true
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 expand = true
 
 [node name="Help" type="Tabs" parent="TabContainer"]
@@ -45,10 +58,11 @@ editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 10.0
+margin_top = 65.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_default_cursor_shape = 2
 __meta__ = {
 "_edit_lock_": true
 }
@@ -81,10 +95,11 @@ editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 10.0
+margin_top = 65.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_default_cursor_shape = 2
 
 [node name="Label" type="Label" parent="TabContainer/About"]
 anchor_left = 0.5
@@ -100,12 +115,13 @@ uppercase = true
 
 [node name="Label2" type="Label" parent="TabContainer/About"]
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.95
+anchor_bottom = 0.5
 margin_left = -200.0
-margin_top = 98.1079
+margin_top = -106.5
 margin_right = 200.0
-margin_bottom = -241.492
+margin_bottom = 106.5
 rect_rotation = 0.187024
 text = "Made with:
 Godot v3.1.1,
@@ -116,14 +132,225 @@ https://github.com/rans0000/endless-runner
 https://fireashfire.itch.io/endurance-runner"
 autowrap = true
 
-[node name="CloseBtn" type="Button" parent="."]
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -230.0
+margin_right = 300.0
+margin_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color( 0.4, 0.172549, 0.172549, 1 )
+
+[node name="TabContainer2" type="TabContainer" parent="ReferenceRect"]
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -75.0
-margin_top = -60.0
-margin_right = 75.0
-margin_bottom = -15.0
-text = "Close"
-[connection signal="pressed" from="CloseBtn" to="." method="_on_close_btn_pressed"]
+
+[node name="CONTROLS" type="Tabs" parent="ReferenceRect/TabContainer2"]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 65.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_default_cursor_shape = 2
+
+[node name="Container" type="Control" parent="ReferenceRect/TabContainer2/CONTROLS"]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container"]
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 60.0
+margin_right = -20.0
+margin_bottom = -20.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer"]
+margin_right = 540.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer"]
+margin_right = 268.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer/MarginContainer"]
+margin_right = 268.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+text = "Move"
+align = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer"]
+editor/display_folded = true
+margin_left = 272.0
+margin_right = 540.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer/MarginContainer2"]
+margin_right = 268.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+text = "W, UP Arrow"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer"]
+editor/display_folded = true
+margin_top = 25.0
+margin_right = 540.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer2"]
+editor/display_folded = true
+margin_right = 268.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer2/MarginContainer"]
+margin_right = 268.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+text = "Move"
+align = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer2"]
+editor/display_folded = true
+margin_left = 272.0
+margin_right = 540.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/VBoxContainer/HBoxContainer2/MarginContainer2"]
+margin_right = 268.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+text = "W, UP Arrow"
+
+[node name="GridContainer" type="GridContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container"]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+columns = 2
+
+[node name="Label" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer"]
+margin_right = 288.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+text = "mmmm"
+align = 2
+
+[node name="Label2" type="Label" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer"]
+margin_left = 292.0
+margin_right = 580.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+text = "2222"
+
+[node name="HELP" type="Tabs" parent="ReferenceRect/TabContainer2"]
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 65.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_default_cursor_shape = 2
+
+[node name="Container2" type="Control" parent="ReferenceRect/TabContainer2/HELP"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HelpHeadingText" type="Label" parent="ReferenceRect/TabContainer2/HELP/Container2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -93.0
+margin_top = 20.0
+margin_right = 93.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 1 )
+text = "How to Play"
+align = 1
+uppercase = true
+
+[node name="HelpText" type="Label" parent="ReferenceRect/TabContainer2/HELP/Container2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 90.0
+margin_right = -20.0
+margin_bottom = -20.0
+text = "Use arrow/ WASD keys to run.
+
+Press 'Jump' key to jump over obstacles. Holding down and releasing jump will powerup your jump. How high you jump also depends on the your speed."
+align = 1
+autowrap = true
+
+[node name="ABOUT" type="Tabs" parent="ReferenceRect/TabContainer2"]
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 65.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_default_cursor_shape = 2
+
+[node name="Container2" type="Control" parent="ReferenceRect/TabContainer2/ABOUT"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="AboutHeadingText" type="Label" parent="ReferenceRect/TabContainer2/ABOUT/Container2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -93.0
+margin_top = 20.0
+margin_right = 93.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 1 )
+text = "Made with:"
+align = 1
+uppercase = true
+
+[node name="AboutText" type="Label" parent="ReferenceRect/TabContainer2/ABOUT/Container2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 90.0
+margin_right = -20.0
+margin_bottom = -20.0
+text = "Godot v3.1.1,
+Krita v4.2.9
+
+Source Code & game:
+https://github.com/rans0000/endless-runner
+https://fireashfire.itch.io/endurance-runner"
+align = 1
+autowrap = true
+
+[node name="TextureButton" type="TextureButton" parent="ReferenceRect"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -38.0
+margin_top = 30.0
+margin_bottom = 68.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 7 )
+texture_focused = ExtResource( 7 )
+[connection signal="pressed" from="ReferenceRect/TextureButton" to="." method="_on_close_btn_pressed"]

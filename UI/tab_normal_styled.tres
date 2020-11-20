@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=2]
+
+[ext_resource path="res://assets/images/tab_normal_tex.png" type="Texture" id=1]
+
+[resource]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 233, 70 )
+margin_left = 30.0
+margin_right = 30.0
+margin_top = 20.0
+margin_bottom = 11.0
