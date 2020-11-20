@@ -8,13 +8,13 @@
 [ext_resource path="res://assets/images/btn_close.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/btn_close_hover.png" type="Texture" id=7]
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 30
 font_data = ExtResource( 5 )
 
@@ -199,7 +199,7 @@ editor/display_folded = true
 margin_right = 580.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="GridContainer" type="GridContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel"]
 editor/display_folded = true
@@ -213,7 +213,7 @@ margin_right = 280.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Strafe Left"
 align = 2
 valign = 1
@@ -234,7 +234,7 @@ margin_top = 34.0
 margin_right = 580.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="GridContainer" type="GridContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel2"]
 margin_right = 580.0
@@ -247,7 +247,7 @@ margin_right = 280.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Strafe Right"
 align = 2
 valign = 1
@@ -268,7 +268,7 @@ margin_top = 68.0
 margin_right = 580.0
 margin_bottom = 92.0
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="GridContainer" type="GridContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel3"]
 margin_right = 580.0
@@ -281,7 +281,7 @@ margin_right = 280.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Jump"
 align = 2
 valign = 1
@@ -302,7 +302,7 @@ margin_top = 102.0
 margin_right = 580.0
 margin_bottom = 126.0
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="GridContainer" type="GridContainer" parent="ReferenceRect/TabContainer2/CONTROLS/Container/GridContainer/Panel4"]
 margin_right = 580.0
@@ -315,7 +315,7 @@ margin_right = 280.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Pause/Options"
 align = 2
 valign = 1
@@ -356,7 +356,7 @@ margin_left = -93.0
 margin_top = 20.0
 margin_right = 93.0
 margin_bottom = 36.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "How to Play"
 align = 1
 uppercase = true
@@ -400,7 +400,7 @@ margin_left = -93.0
 margin_top = 20.0
 margin_right = 93.0
 margin_bottom = 56.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Made with:"
 align = 1
 uppercase = true

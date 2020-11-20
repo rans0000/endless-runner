@@ -1,98 +1,105 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://UI/PauseMenu/PauseMenu.gd" type="Script" id=1]
-[ext_resource path="res://fonts/RacingSansOne-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://fonts/AnonymousPro-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://UI/Main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/PauseMenu/PauseMenu.gd" type="Script" id=2]
+[ext_resource path="res://fonts/PoetsenOne-Regular.otf" type="DynamicFontData" id=3]
 
-[sub_resource type="DynamicFont" id=1]
-size = 30
-font_data = ExtResource( 2 )
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.423529, 0.337255, 0.482353, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.266667, 0.12549, 0.164706, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color( 0.380392, 0.101961, 0.266667, 0.0588235 )
+shadow_size = 16
 
 [sub_resource type="DynamicFont" id=2]
-use_filter = true
+size = 30
 font_data = ExtResource( 3 )
 
 [node name="PauseMenu" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.972549, 0.584314, 0.701961, 0.4 )
 
 [node name="Panel" type="Panel" parent="."]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -200.0
-margin_top = -150.0
+margin_top = -185.5
 margin_right = 200.0
-margin_bottom = 150.0
-__meta__ = {
-"_edit_lock_": true
-}
+margin_bottom = 185.5
+custom_styles/panel = SubResource( 1 )
 
 [node name="Label" type="Label" parent="Panel"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 margin_left = -54.0
-margin_top = -93.2691
+margin_top = 35.0
 margin_right = 54.0
-margin_bottom = -54.2691
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 2 )
 text = "PAUSED"
-__meta__ = {
-"_edit_lock_": true
-}
+align = 1
 
-[node name="ResumeButton" type="Button" parent="Panel"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -51.0
-margin_top = -39.7691
-margin_right = 51.0
-margin_bottom = -7.76909
-custom_fonts/font = SubResource( 2 )
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 100.0
+margin_right = -100.0
+margin_bottom = -50.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 15
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="Panel/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "RESUME"
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="MainMenuButton" type="Button" parent="Panel"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -51.0
-margin_top = 3.93091
-margin_right = 51.0
-margin_bottom = 35.9309
-custom_fonts/font = SubResource( 2 )
+[node name="MainMenuButton" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 78.0
+margin_right = 200.0
+margin_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "MAIN MENU"
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="QuitButton" type="Button" parent="Panel"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -51.0
-margin_top = 48.352
-margin_right = 51.0
-margin_bottom = 80.352
-custom_fonts/font = SubResource( 2 )
+[node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 156.0
+margin_right = 200.0
+margin_bottom = 221.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "QUIT GAME"
-__meta__ = {
-"_edit_lock_": true
-}
-[connection signal="pressed" from="Panel/ResumeButton" to="." method="_on_resumebutton_pressed"]
-[connection signal="pressed" from="Panel/MainMenuButton" to="." method="_on_mainmenu_button_pressed"]
-[connection signal="pressed" from="Panel/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ResumeButton" to="." method="_on_resumebutton_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/MainMenuButton" to="." method="_on_mainmenu_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
