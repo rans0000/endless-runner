@@ -14,3 +14,7 @@ func clamp_vector(vector, length):
 func number_hit_test(current_num):
 	var award_points = true if current_num % puzzle_number == 0 else false
 	return award_points
+
+
+func change_master_number(val):
+	puzzle_number = val

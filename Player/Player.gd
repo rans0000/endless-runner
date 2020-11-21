@@ -7,6 +7,7 @@ onready var Utils = get_node("/root/Utils")
 onready var animationTree = $PlayerModel/AnimationTree
 onready var playback = animationTree.get('parameters/playback')
 onready var forward_timer = $ForwardSpeedTimer
+onready var score_card = $ScoreCard
 
 var gravity = -9.3 * 8
 var velocity = Vector3()
@@ -42,6 +43,11 @@ onready var back_feeler = $BackFeeler
 
 func _ready():
 	playback.start(state.idle)
+
+
+func _process(delta):
+	score_card.set_distance(-transform.origin.z as int)
+
 
 func _physics_process(delta):
 	move_player(delta)
@@ -165,9 +171,17 @@ func on_collide_number(award_points):
 		forward_timer.start()
 		forward_speed = FORWARD_BONUS_SPEED
 		velocity = velocity + (velocity * .5)
+		score_card.add_coins()
+		score_card.set_sprint()
 	else:
 		forward_speed = FORWARD_PENALTY_SPEED
 		velocity = velocity / 2
+		score_card.clear_boosts()
 
 func _on_forward_timer_timeout():
 	forward_speed = REGULAR_FORWARD_SPEED
+	score_card.clear_boosts()
+
+
+func _on_master_number_timeout():
+	score_card.set_puzzle_number()

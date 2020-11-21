@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/ScoreCard/ScoreCard.gd" type="Script" id=1]
+[ext_resource path="res://UI/ScoreCard/DistanceScore.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/ScoreCard/CoinScore.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/ScoreCard/BoostIcon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/ScoreCard/FactoreScore.tscn" type="PackedScene" id=5]
+
+[node name="ScoreCard" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PointsWrap" type="MarginContainer" parent="."]
+editor/display_folded = true
+margin_right = 220.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 220, 130 )
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Rc" type="ReferenceRect" parent="PointsWrap"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 210.0
+margin_bottom = 120.0
+
+[node name="DistanceScore" parent="PointsWrap/Rc" instance=ExtResource( 2 )]
+
+[node name="CoinScore" parent="PointsWrap/Rc" instance=ExtResource( 3 )]
+margin_left = 41.0
+margin_top = 45.0
+
+[node name="BoostIcon" parent="PointsWrap/Rc" instance=ExtResource( 4 )]
+margin_top = 59.0
+
+[node name="FactorWrap" type="MarginContainer" parent="."]
+editor/display_folded = true
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -110.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="FactoreScore" parent="FactorWrap" instance=ExtResource( 5 )]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 100.0
+margin_bottom = 114.0

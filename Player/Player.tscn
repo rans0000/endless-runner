@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Camera.gd" type="Script" id=2]
 [ext_resource path="res://Player/PlayerModel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/ScoreCard/ScoreCard.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.6
@@ -13,7 +14,6 @@ height = 1.1
 [node name="Player" type="KinematicBody" groups=[
 "Player",
 ]]
-editor/display_folded = true
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 1 )
@@ -68,4 +68,12 @@ shape = SubResource( 2 )
 
 [node name="ForwardSpeedTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="ScoreCard" parent="." instance=ExtResource( 4 )]
+
+[node name="MasterNumberSetter" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
 [connection signal="timeout" from="ForwardSpeedTimer" to="." method="_on_forward_timer_timeout"]
+[connection signal="timeout" from="MasterNumberSetter" to="." method="_on_master_number_timeout"]
