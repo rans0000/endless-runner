@@ -1,28 +1,30 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/Main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://UI/OptionsMenu/OptionsMenu.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/bg_gradient_tex.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/controls-screen.png" type="Texture" id=4]
-[ext_resource path="res://fonts/PoetsenOne-Regular.otf" type="DynamicFontData" id=5]
-[ext_resource path="res://assets/images/btn_close.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/btn_close_hover.png" type="Texture" id=7]
+[ext_resource path="res://fonts/PoetsenOne-Regular.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/images/btn_close.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/btn_close_hover.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="DynamicFont" id=2]
 size = 20
-font_data = ExtResource( 5 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 30
-font_data = ExtResource( 5 )
+font_data = ExtResource( 4 )
 
 [node name="OptionsMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="MenuBg" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -35,113 +37,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="TabContainer" type="TabContainer" parent="."]
-editor/display_folded = true
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = -80.0
-tab_align = 0
-
-[node name="Controls" type="Tabs" parent="TabContainer"]
-editor/display_folded = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 65.0
-margin_right = -10.0
-margin_bottom = -10.0
-rect_clip_content = true
-mouse_default_cursor_shape = 2
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Controls"]
-anchor_right = 1.0
-margin_bottom = 600.0
-rect_scale = Vector2( 1, 0.95 )
-rect_clip_content = true
-texture = ExtResource( 4 )
-expand = true
-
-[node name="Help" type="Tabs" parent="TabContainer"]
-editor/display_folded = true
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 65.0
-margin_right = -10.0
-margin_bottom = -10.0
-mouse_default_cursor_shape = 2
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Label" type="Label" parent="TabContainer/Help"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -120.5
-margin_top = 32.9358
-margin_right = 120.5
-margin_bottom = 88.9358
-text = "HOW TO PLAY"
-align = 1
-valign = 1
-
-[node name="Label2" type="Label" parent="TabContainer/Help"]
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.95
-margin_left = -200.0
-margin_top = 98.1079
-margin_right = 200.0
-margin_bottom = -241.492
-rect_rotation = 0.187024
-text = "Use movement keys to run. Press 'Jump' key to jump over obstacles. Holding down and releasing jump will powerup your jump. How high you jump also depends on the your speed."
-autowrap = true
-
-[node name="About" type="Tabs" parent="TabContainer"]
-editor/display_folded = true
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 65.0
-margin_right = -10.0
-margin_bottom = -10.0
-mouse_default_cursor_shape = 2
-
-[node name="Label" type="Label" parent="TabContainer/About"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -120.5
-margin_top = 32.9358
-margin_right = 120.5
-margin_bottom = 88.9358
-text = "About"
-align = 1
-valign = 1
-uppercase = true
-
-[node name="Label2" type="Label" parent="TabContainer/About"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -106.5
-margin_right = 200.0
-margin_bottom = 106.5
-rect_rotation = 0.187024
-text = "Made with:
-Godot v3.1.1,
-Krita v4.2.9
-
-Source Code & game:
-https://github.com/rans0000/endless-runner
-https://fireashfire.itch.io/endurance-runner"
-autowrap = true
-
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -168,6 +65,7 @@ __meta__ = {
 
 [node name="CONTROLS" type="Tabs" parent="ReferenceRect/TabContainer2"]
 editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -176,7 +74,6 @@ margin_right = -10.0
 margin_bottom = -10.0
 mouse_default_cursor_shape = 2
 __meta__ = {
-"_edit_group_": true,
 "_edit_lock_": true
 }
 
@@ -332,7 +229,6 @@ valign = 1
 
 [node name="HELP" type="Tabs" parent="ReferenceRect/TabContainer2"]
 editor/display_folded = true
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -369,6 +265,8 @@ margin_top = 90.0
 margin_right = -20.0
 margin_bottom = -20.0
 text = "Use arrow/ WASD keys to run.
+
+Select a number at the begining a game. Collect coins that are multiples of the selected number to gain a small speed boost. Running up to other coins will slow you down temporarily.
 
 Press 'Jump' key to jump over obstacles. Holding down and releasing jump will powerup your jump. How high you jump also depends on the your speed."
 align = 1
@@ -428,10 +326,10 @@ margin_left = -38.0
 margin_top = 30.0
 margin_bottom = 68.0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 7 )
-texture_focused = ExtResource( 7 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
