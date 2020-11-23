@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://UI/MainMenu/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/bg_gradient_tex.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/logo_endurance_runner.png" type="Texture" id=4]
 [ext_resource path="res://UI/OptionsMenu/OptionsMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/music/menu_music.ogg" type="AudioStream" id=6]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -28,14 +29,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="ReferenceRect" type="ReferenceRect" parent="GameMenu"]
-editor/display_folded = true
 margin_right = 800.0
 margin_bottom = 565.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameMenu/ReferenceRect"]
-editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -104,6 +103,11 @@ align = 2
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 5 )]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -25.0
+autoplay = true
 [connection signal="pressed" from="GameMenu/ReferenceRect/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="GameMenu/ReferenceRect/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="GameMenu/ReferenceRect/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -27,6 +27,13 @@ Utils="*res://Utils/Utils.gd"
 
 window/size/width=800
 
+[importer_defaults]
+
+ogg_vorbis={
+"loop": true,
+"loop_offset": 0
+}
+
 [input]
 
 move_forward={
