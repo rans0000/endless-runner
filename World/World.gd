@@ -3,16 +3,23 @@ extends Spatial
 const master_floor = preload("res://World/Floor.tscn")
 
 onready var number_menu = $MasterNumberMenu
+onready var bg_music = $BGMusic
+var target_pitch = 1
 
 const BOARD_SET_LENGTH = 3
 var boards = []
 var board_length = 100
+
+func _process(delta):
+	bg_music.pitch_scale = lerp(bg_music.pitch_scale, target_pitch, delta)
+	print(bg_music.pitch_scale)
 
 func _ready():
 	var start_floor = $StartFloor
 	boards.push_back(start_floor)
 	$Player.connect("detect_empty_floor", self, "create_floor")
 	$Player.connect("detect_obsolete_floor", self, "delete_floor")
+	$Player.connect("boost_mode", self, "adjust_bg_music")
 	get_tree().paused = true
 	number_menu.visible = true
 
@@ -33,3 +40,15 @@ func delete_floor(target_floor):
 	#print('deleting...', target_floor)
 	boards.erase(target_floor)
 	target_floor.queue_free()
+
+
+func adjust_bg_music(type):
+	print(type)
+	if type == 1:
+		target_pitch = 1.2
+	elif type == -1:
+		target_pitch = 0.9
+	else:
+		target_pitch = 1
+
+

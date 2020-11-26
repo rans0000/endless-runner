@@ -92,7 +92,7 @@ visible = false
 [node name="MasterNumberMenu" parent="." instance=ExtResource( 6 )]
 pause_mode = 2
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 7 )
 autoplay = true

@@ -2,6 +2,7 @@ extends KinematicBody
 
 signal detect_empty_floor
 signal detect_obsolete_floor
+signal boost_mode(type)
 
 onready var Utils = get_node("/root/Utils")
 onready var animationTree = $PlayerModel/AnimationTree
@@ -76,6 +77,7 @@ func move_forward(delta):
 	
 	var fv = Utils.clamp_vector(Vector3(0, 0, velocity.z), forward_speed)
 	if is_floored:
+		#print(velocity)
 		forward_velocity += Vector3.FORWARD
 		var new_pos = forward_velocity * forward_speed
 		previous_speed = new_pos
@@ -173,14 +175,17 @@ func on_collide_number(award_points):
 		velocity = velocity + (velocity * .5)
 		score_card.add_coins()
 		score_card.set_sprint()
+		emit_signal("boost_mode", 1)
 	else:
 		forward_speed = FORWARD_PENALTY_SPEED
 		velocity = velocity / 2
 		score_card.clear_boosts()
+		emit_signal("boost_mode", -1)
 
 func _on_forward_timer_timeout():
 	forward_speed = REGULAR_FORWARD_SPEED
 	score_card.clear_boosts()
+	emit_signal("boost_mode", 0)
 
 
 func _on_master_number_timeout():

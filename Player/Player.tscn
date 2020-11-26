@@ -57,7 +57,6 @@ __meta__ = {
 transform = Transform( -2, 0, -1.74846e-007, 0, 2, 0, 1.74846e-007, 0, -2, 0, 0, 0 )
 
 [node name="NumberSpawner" type="RigidBody" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100 )
 __meta__ = {
 "_edit_lock_": true
