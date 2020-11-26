@@ -12,7 +12,6 @@ var board_length = 100
 
 func _process(delta):
 	bg_music.pitch_scale = lerp(bg_music.pitch_scale, target_pitch, delta)
-	print(bg_music.pitch_scale)
 
 func _ready():
 	var start_floor = $StartFloor
@@ -43,7 +42,6 @@ func delete_floor(target_floor):
 
 
 func adjust_bg_music(type):
-	print(type)
 	if type == 1:
 		target_pitch = 1.2
 	elif type == -1:

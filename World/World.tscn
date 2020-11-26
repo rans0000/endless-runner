@@ -95,4 +95,5 @@ pause_mode = 2
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 7 )
+volume_db = -10.0
 autoplay = true

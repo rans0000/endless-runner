@@ -4,11 +4,14 @@ signal detect_empty_floor
 signal detect_obsolete_floor
 signal boost_mode(type)
 
+enum {BAD_HIT = 0, GOOD_HIT = 1}
 onready var Utils = get_node("/root/Utils")
 onready var animationTree = $PlayerModel/AnimationTree
 onready var playback = animationTree.get('parameters/playback')
 onready var forward_timer = $ForwardSpeedTimer
 onready var score_card = $ScoreCard
+onready var audio_ctrl = $AudioCtrl
+onready var sfx_list = [preload("res://assets/music/coin-bad-hit.wav"), preload("res://assets/music/coin-good-hit.ogg")]
 
 var gravity = -9.3 * 8
 var velocity = Vector3()
@@ -175,11 +178,15 @@ func on_collide_number(award_points):
 		velocity = velocity + (velocity * .5)
 		score_card.add_coins()
 		score_card.set_sprint()
+		audio_ctrl.stream = sfx_list[GOOD_HIT]
+		audio_ctrl.play()
 		emit_signal("boost_mode", 1)
 	else:
 		forward_speed = FORWARD_PENALTY_SPEED
 		velocity = velocity / 2
 		score_card.clear_boosts()
+		audio_ctrl.stream = sfx_list[BAD_HIT]
+		audio_ctrl.play()
 		emit_signal("boost_mode", -1)
 
 func _on_forward_timer_timeout():
