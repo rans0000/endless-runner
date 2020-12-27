@@ -39,14 +39,15 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5 )
 
 [node name="CameraFocus" type="Spatial" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 0.928886, 0.370366, 0, -0.370366, 0.928886, 0, 3.33107, 5.75367 )
+transform = Transform( 1, 0, 0, 0, 0.928886, 0.370366, 0, -0.370366, 0.928886, 0, 3.33107, 3.72783 )
 
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.316, 2.427 )
 environment = ExtResource( 3 )
+v_offset = 1.5
 current = true
 fov = 50.0
-far = 200.0
+far = 300.0
 target = NodePath("../Player/CameraFocus")
 speed = 8.0
 enabled = true
