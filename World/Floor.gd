@@ -5,6 +5,7 @@ var rng = RandomNumberGenerator.new()
 var walls = [preload("res://World/Wall.tscn")]
 export (Array, PackedScene) var houses
 export (Array, PackedScene) var trees
+export (PackedScene) var street_scene
 
 var board_length = 100
 var MIN_WALL_DIST = 10
@@ -16,6 +17,7 @@ var MAX_TREE_POS = 25
 var HOME_SPAWN_CHANCE = 50
 var HOME_WIDTH = 20
 var HOME_LENGTH = 30
+var street_x_offset = 53.3
 
 func _ready():
 	rng.randomize()
@@ -23,8 +25,19 @@ func _ready():
 
 
 func populate_environment():
-	var has_home = populate_with_homes()
-	populate_with_trees(has_home)
+	#var has_home = populate_with_homes()
+	#populate_with_trees(has_home)
+	populate_street()
+	pass
+
+
+func populate_street():
+	var street = street_scene.instance()
+	street.transform.origin = Vector3(street_x_offset, 0, 0)
+	add_child(street)
+	street = street_scene.instance()
+	street.transform.origin = Vector3(-street_x_offset, 0, 0)
+	add_child(street)
 	pass
 
 
