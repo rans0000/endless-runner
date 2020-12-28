@@ -5,6 +5,7 @@ signal detect_obsolete_floor
 signal boost_mode(type)
 
 enum {BAD_HIT = 0, GOOD_HIT = 1}
+export (String, "1", "2") var player_no
 onready var Utils = get_node("/root/Utils")
 onready var animationTree = $PlayerModel/AnimationTree
 onready var playback = animationTree.get('parameters/playback')
@@ -112,9 +113,9 @@ func move_sideways():
 	var is_floored = is_on_floor()
 	var slide_velocity = Vector3()
 	
-	if is_floored and Input.is_action_just_pressed("move_left"):
+	if is_floored and Input.is_action_just_pressed("move_left_%s" % player_no):
 		current_strafe_position = (0) if (current_strafe_position - 1 < 0) else (current_strafe_position - 1)
-	elif is_floored and Input.is_action_just_pressed("move_right"):
+	elif is_floored and Input.is_action_just_pressed("move_right_%s" % player_no):
 		current_strafe_position = (MAX_STRAFE_POSITION -1 ) if (current_strafe_position + 1 >= MAX_STRAFE_POSITION) else (current_strafe_position + 1)
 	
 	var target_pos = transform.origin
@@ -138,9 +139,9 @@ func jump():
 		jump_power += 1
 		jump_power = clamp(jump_power, 0, MAX_JUMP_POWER)
 	
-	if not is_jumping and Input.is_action_just_pressed("jump"):
+	if not is_jumping and Input.is_action_just_pressed("jump_%s" % player_no):
 		is_powering_jump = true
-	if not is_jumping and Input.is_action_just_released("jump"):
+	if not is_jumping and Input.is_action_just_released("jump_%s" % player_no):
 		is_powering_jump = false
 		is_jumping = true
 		jump_speed.y += calculate_jump_power(jump_speed)

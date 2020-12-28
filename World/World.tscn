@@ -34,12 +34,20 @@ extents = Vector3( 50, 6, 1 )
 
 [node name="World" type="Spatial"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5 )
+player_no = "1"
 
 [node name="CameraFocus" type="Spatial" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 0.928886, 0.370366, 0, -0.370366, 0.928886, 0, 3.33107, 3.72783 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.316, 2.427 )
@@ -51,6 +59,9 @@ far = 300.0
 target = NodePath("../Player/CameraFocus")
 speed = 8.0
 enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StartFloor" type="RigidBody" parent="." groups=[
 "Floor",
@@ -86,6 +97,9 @@ light_energy = 2.0
 light_specular = 0.51
 shadow_enabled = true
 directional_shadow_mode = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="PauseMenu" parent="." instance=ExtResource( 5 )]
 visible = false
