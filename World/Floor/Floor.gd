@@ -2,7 +2,7 @@ extends RigidBody
 
 var rng = RandomNumberGenerator.new()
 
-var walls = [preload("res://World/Wall.tscn")]
+var walls = [preload("res://World/Wall/Wall.tscn")]
 export (Array, PackedScene) var houses
 export (Array, PackedScene) var trees
 export (PackedScene) var street_scene

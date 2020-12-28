@@ -1,6 +1,6 @@
 extends Spatial
 
-const master_floor = preload("res://World/Floor.tscn")
+const master_floor = preload("res://World/Floor/Floor.tscn")
 
 onready var number_menu = $MasterNumberMenu
 onready var bg_music = $BGMusic
